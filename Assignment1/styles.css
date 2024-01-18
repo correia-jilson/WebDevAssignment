@@ -160,6 +160,15 @@ body {
         display: none;
     }
 
+    summary {
+        font-size: 7px;
+    }
+
+    .contact {
+        max-width: 90%;
+        font-size: 10px;
+    }
+
 
 }
 
@@ -168,7 +177,7 @@ body {
     .head {
         font-size: 20px;
         margin-top: 10vh;
-        color: grey;
+        color: rgb(255, 255, 255);
     }
 
     .stacked {
@@ -180,7 +189,7 @@ body {
     .head {
         font-size: 20px;
         margin-top: 30%;
-        color: grey;
+        color: rgb(255, 255, 255);
     }
 }
 
