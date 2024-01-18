@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- including all the links for styleshees etc -->
+    <link rel="icon" href="images/eyesofdestiny.jpg" type="image/png">
     <link rel="stylesheet" href="styles.css"> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -214,7 +215,9 @@
                 </div>
 
                 <div class="cell button allButton">
-                    <a type="submit">Submit</a>
+                    <a href="#" onclick="refreshPage()" type="submit" >Submit</a>
+                    <!-- no action provided as its just a demo
+                    reloads the page on clicking submit  -->
                 </div>
 
 
@@ -243,25 +246,36 @@
         <div class="footer-box">
             <h3>Contact Details</h3>
             <ul>
-                <li><a href="#">Phone</a></li>
-                <li><a href="#">Text</a></li>
+                <!-- tel no in footer  -->
+                <li><a href="tel:+18577638363">Phone</a></li>   
+                <li><a href="sms:+18577638363?body=!">Text</a></li>
             </ul>
         </div>
         <div class="footer-box">
             <h3>Social Media</h3>
             <ul>
-                <li><a href="www.instagram.com">Instagram</a></li>
-                <li><a href="www.youtube.com">YouTube</a></li>
+                <!-- added standard home page urls for now -->
+                <li><a href="https://www.Instagram.com/">Instagram</a></li>
+                <li><a href="https://www.youtube.com/">YouTube</a></li>
             </ul>
         </div>
         <div class="footer-box">
-            <h3>Title 3</h3>
+            <h3>Location</h3>
             <ul>
-                <li><a href="#">Link 1</a></li>
-                <li><a href="#">Link 2</a></li>
+                <li>
+                    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1474.583628069117!2d-71.0889858!3d42.3389573!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e37a22795246eb%3A0x3a4ce38b2683a72!2sNortheastern%20University%20College%20of%20Engineering!5e0!3m2!1sen!2sus!4v1705612819134!5m2!1sen!2sus"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </li>
             </ul>
         </div>
     </div>
 </footer>
+
+<!-- just for a refresh action on submit -->
+
+<script>
+    function refreshPage() {
+        location.reload(true);
+    }
+</script>
 
 </html>

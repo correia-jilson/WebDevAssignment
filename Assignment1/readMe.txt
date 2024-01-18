@@ -10,6 +10,6 @@ video                                   Done
 header                                  Done
 footer                                  Done
 summary                                 Done
-menu
-tel for contact information             InFooter
+menu                                    DoneNavbarAtTop
+tel for contact information             DoneInFooter
 mailto for contact information          DoneInContactUs     
