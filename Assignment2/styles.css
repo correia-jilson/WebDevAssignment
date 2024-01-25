@@ -171,6 +171,9 @@ body {
     .map {
         max-width: 80%;
     }
+    .container, .container1 {
+        flex-wrap: wrap;
+    }
 
 }
 
@@ -187,7 +190,9 @@ body {
     }
 }
 
-@media (max-width: 330px) {
+/* mobile phone view */
+
+@media (max-width: 365px) {
     .head {
         font-size: 20px;
         margin-top: 30%;
@@ -272,8 +277,9 @@ tr:nth-of-type(2n) {
     opacity: .5;
 }
 
+/* ipad view 768 */
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     table {
         max-width: 40%;
     }
@@ -319,14 +325,15 @@ audio {
 
 .divbox{
     display: flex;
-    justify-content: space-evenly;
-    max-width: 100%;
-    flex-wrap: wrap;   
+    justify-content: center;
+    max-width: 100%;  
+    padding: 10px;
 }
 
 video {
     position: relative;
     width: 80%;
+    align-items: center;
     height: 85vh;
 }
 
@@ -412,7 +419,10 @@ footer {
         align-items: center;
     }
 }
-
+h1 {
+    padding: 20px;
+    align-items: center;
+}
 .container {
     display: flex;
     flex-direction: row;
@@ -421,11 +431,12 @@ footer {
     padding: 20px;
     margin: 100px auto;
     background-color: #aaa;
+    
 }
 
 .box {
     max-width: 250px;
-    height: 300px;
+    height: 100%;
     box-shadow: #333 5px;
     background: rgba(99, 97, 97, 0.014);
     margin: 0 10px;
@@ -464,6 +475,7 @@ p:hover {
     padding: 20px;
     margin: 100px auto;
     background-color: #b68686;
+    
 }
 
 .parts {
@@ -472,3 +484,24 @@ p:hover {
     align-items: center;
 }
 
+.combined-container {
+    width: 90%;
+    overflow: hidden;
+    padding: 20px;
+  }
+  
+  .float {
+    width: 50%;
+    float: left; 
+    background-color: #ffffff;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .overflow {
+    width: 50%;
+    overflow: auto; 
+    background-color: #ffffff;
+    padding: 20px;
+    box-sizing: border-box;
+  }
