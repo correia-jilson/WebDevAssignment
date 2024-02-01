@@ -93,12 +93,15 @@ function checkboxChange(value) {
 
       var submit_button = document.getElementById('button');
       var parent_element = this.parentElement.parentElement.lastElementChild; 
+      // edit column button
       var del_btn = parent_element.previousElementSibling.style.display;
+      // delete column button
       var edit_btn = parent_element.style.display;
       
       checkbox[value].checked ? count_checkbox++ : count_checkbox--;
       if(count_checkbox > 0)
       {
+        // make SubmitSelectButton orange when any box checked
         document.getElementById("button").style.backgroundColor = "orange";
         document.getElementById("button").style.borderColor = "orange";
 
@@ -111,6 +114,7 @@ function checkboxChange(value) {
       }
       else if(count_checkbox == 0)
       {
+        // make SubmitSelectButton gray when any box not checked
         document.getElementById("button").style.backgroundColor = "gray";
         document.getElementById("button").style.borderColor = "gray"; 
         delete_col[0].style.display = "none";
@@ -121,7 +125,9 @@ function checkboxChange(value) {
       if(this.checked) {
         var row = this.parentNode.parentNode.rowIndex;
         var checked_row = document.getElementsByTagName('tr')[row];
+        // changing row bg when checked
         checked_row.style.backgroundColor = "yellow";
+        
       } 
       else {
       var row = this.parentNode.parentNode.rowIndex;
@@ -148,6 +154,7 @@ function delete_row(row) {
   {
     document.getElementById("button").style.backgroundColor = "gray";
     document.getElementById("button").style.borderColor = "gray";
+    // submit gray 
     delete_col[0].style.display = "none";
     edit_col[0].style.display = "none";
   }
@@ -163,8 +170,7 @@ function edit_row(row) {
 function imageAction() {
 var img_tag = document.querySelectorAll("img");
 var dropDTA = document.getElementsByClassName("dropDownTextArea");
-  for(i=0; i<img_tag.length; i++)
-  {
+  for( i = 0 ; i < img_tag.length ; i++ ){
     img_tag[i].onclick = function() {
       var parent_text_node = this.parentElement;
       var text_node = parent_text_node.parentElement.nextElementSibling;
