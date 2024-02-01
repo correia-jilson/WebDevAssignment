@@ -11,7 +11,7 @@
 </head>
 <H2>Jilson Correia NUID: 002695019</H2>
 <!-- add the onload action  -->
-<body onload = " imageAction() ">
+<body onload = "imageAction()">
 	
 	<table id="myTable">
 		<tr>
@@ -23,11 +23,11 @@
 			<th>TYPE</th>
 			<th>BUDGET<br />#</th>
 			<th>PERCENTAGE</th>
-			<th class = delete_col>DELETE</th>
-			<th class = edit_col>Edit Student</th>
+			<th class = "delete_col">DELETE</th>
+			<th class = "edit_col">Edit Student</th>
 		</tr>
 		<tr>
-			<td><input type="checkbox" onclick="checkboxChange()" class=" checkbox " /><br /><br /><img onclick="imageAction(this)" src="down.png" width="25px" /></td>
+			<td><input type="checkbox" onclick="checkboxChange()" /><br /><br /><img onclick="imageAction(this)" src="down.png" width="25px" /></td>
 			<td>Student 1</td>
 			<td>Teacher 1</td>
 			<td>Approved</td>
@@ -35,8 +35,8 @@
 			<td>TA</td>
 			<td>12345</td>
 			<td>100%</td>
-			<td><button class=" delete_btn " onclick=" delete_row(this) ">Delete</button></td>
-			<td><button class=" edit_btn " onclick=" edit_row(this) ">edit</button></td>
+			<td><button onclick = "delete_row(this)">Delete</button></td>
+			<td><button onclick = "edit_row(this)">Edit</button></td>
 		</tr>
 		<tr class="dropDownTextArea" style="display: none;"><td colspan="8">
 			Advisor:<br /><br />
@@ -47,8 +47,9 @@
 			Comments:<br /><br /><br />
 			Award Status:<br /><br /><br />
 		</td></tr>
-		<tr bgcolor="orange">
-			<td><input type="checkbox" class="checkbox" checked onclick=" checkboxChange() "/><br /><br /><img src="down.png" width="25px" onclick=" imageAction() " /></td>
+		<!-- bg orange deleted -->
+		<tr>
+			<td><input type="checkbox" onclick="checkboxChange()"/><br /><br /><img src="down.png" width="25px" onclick="imageAction()" /></td>
 			<td>Student 2</td>
 			<td>Teacher 2</td>
 			<td>Approved</td>
@@ -56,10 +57,10 @@
 			<td>TA</td>
 			<td>23456</td>
 			<td>100%</td>
-			<td><button class=" delete_btn " onclick=" delete_row(this) ">Delete</button></td>
-			<td><button class=" edit_btn " onclick=" edit_row(this) ">edit</button></td>
+			<td><button onclick = "delete_row(this)">Delete</button></td>
+			<td><button onclick = "edit_row(this)">Edit</button></td>
 		</tr>
-		<tr class="dropDownTextArea" style=" display: none ;"><td colspan="8">
+		<tr class="dropDownTextArea" style="display: none;"><td colspan="8">
 			Advisor:<br /><br />
 			Award Details<br />
 			Summer 1-2014(TA)<br />
@@ -69,7 +70,7 @@
 			Award Status:<br /><br /><br />
 		</td></tr>
 		<tr>
-			<td><input type="checkbox" onclick=" checkboxChange() " /><br /><br /><img onclick=" imageAction() " src="down.png" width="25px" /></td>
+			<td><input type="checkbox" onclick="checkboxChange()" /><br /><br /><img onclick=" imageAction() " src="down.png" width="25px" /></td>
 			<td>Student 3</td>
 			<td>Teacher 3</td>
 			<td>Approved</td>
@@ -77,11 +78,10 @@
 			<td>TA</td>
 			<td>34567</td>
 			<td>100%</td>
-			<td><button class=" delete_btn " onclick=" delete_row(this) ">Delete</button></td>
-			<td><button class=" edit_btn " onclick=" edit_row(this) ">edit</button></td>
-			
+			<td><button onclick = "delete_row(this)">Delete</button></td>
+			<td><button onclick="edit_row(this)">Edit</button></td>
 		</tr>
-		<tr class="dropDownTextArea" style=" display: none ;"><td colspan="8">
+		<tr class="dropDownTextArea" style="display: none;"><td colspan="8">
 			Advisor:<br /><br />
 			Award Details<br />
 			Summer 1-2014(TA)<br />
@@ -95,7 +95,7 @@
 	<br /><br />
 	
 	<button id="button">SUBMIT SELECTED AWARDS</button>
-	<button id="add" onclick=" new_element() ">Add New Student</button>
+	<button id="add" onclick="new_element()">Add New Student</button>
 
 	<nav class="socialmediaicons"></nav>
 	<script src="script.js"></script>
