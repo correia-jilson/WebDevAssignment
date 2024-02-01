@@ -22,3 +22,13 @@
 	border:2px solid orange;
 	margin-left: 180px;
 }
+
+/* my addition  */
+
+#myTable tr td:nth-child(9), .delete_btn, .delete_col {
+	display: none;
+}
+
+#myTable tr td:nth-child(10), .edit_col, .edit_btn {
+	display: none;
+}
