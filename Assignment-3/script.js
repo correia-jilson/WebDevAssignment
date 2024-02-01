@@ -148,6 +148,7 @@ function delete_row(row) {
   prime.parentNode.nextElementSibling.remove(dropDown);
   // row delete
   prime.parentNode.remove(prime);
+  // decrease the count of checkbox
   count_checkbox--;
   var tableLength = document.querySelectorAll('tbody > tr').length;
   if(count_checkbox == 0)
@@ -185,6 +186,18 @@ var dropDTA = document.getElementsByClassName("dropDownTextArea");
     }
   }
 }
+
+// function imageAction() {
+//   const images = document.querySelectorAll("img");
+
+//   images.forEach(image => {
+//       image.onclick = function() {
+//           const text_node = this.parentElement.parentElement.nextElementSibling;
+//           text_node.style.display = text_node.style.display === "block" ? "none" : "block";
+//       };
+//   });
+// }
+
 
 
 
