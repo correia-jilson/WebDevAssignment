@@ -67,9 +67,21 @@
 			<br><br> 
              
 			<label for="comments">Comments*:</label>
-			<textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25"></textarea>
+			<textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25" required minlength="5" maxlength="500" ></textarea>
 			<br><br>
-			<input type="Submit">
+
+			<label for="selectList">Select an option:</label>
+                <select id="selectList" onchange="toggleCheckbox()">
+                    <option value="option1">Coffee</option>
+                    <option value="option2">Tea</option>
+                    <option value="option3">Breakfast bagel</option>
+                    <option value="option4">Sandwich</option>
+                    <option value="option5">Juice</option>
+                </select>
+
+			<div id="checkboxContainer"></div> <br><br>
+
+			<input type="Submit" id="submitButton" disabled>
 			<input type="Reset">
 			<br><br>
 		 </form>
@@ -77,6 +89,36 @@
  </div>
 
  <script>
+
+		function validateField(fieldId, regex, minLength, maxLength) {
+            const field = document.getElementById(fieldId);
+            const fieldValue = field.value.trim();
+
+            if (fieldValue === '' || fieldValue.length < minLength || fieldValue.length > maxLength || !regex.test(fieldValue)) {
+                field.classList.add('error');
+                return false;
+            } else {
+                field.classList.remove('error');
+                return true;
+            }
+        }
+
+		// regex validations 
+		function validateForm() {
+            const isValidTitle = document.querySelector('input[name="title"]:checked');
+            const isValidFirstName = validateField('firstName', /^[A-Za-z0-9]+$/, 2, 50);
+            const isValidLastName = validateField('lastName', /^[A-Za-z0-9]+$/, 2, 50);
+            const isValidEmail = validateField('emailId', /^[a-zA-Z0-9._%+-]+@northeastern.edu$/, 1, 255);
+            const isValidPhoneNumber = validateField('phoneNumber', /^[1-9]{3}-[0-9]{3}-[0-9]{4}$/, 1, 15);
+            const isValidZipCode = validateField('zipcode', /^[0-9]{6}$/, 1, 10);
+            const isValidComments = validateField('comments', /^[A-Za-z0-9\s.,!?]+$/, 5, 500);
+
+            const isValidForm = isValidTitle && isValidFirstName && isValidLastName && isValidEmail && isValidPhoneNumber && isValidZipCode && isValidComments;
+
+            document.getElementById('submitButton').disabled = !isValidForm;
+
+            return isValidForm;
+        }
  
  </script>
 
