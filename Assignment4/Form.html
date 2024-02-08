@@ -17,6 +17,7 @@
         padding: 50px;
     }
 
+	/* to display error message and wrong text as red */
 	.error {
 		color: red;
 	}
@@ -30,6 +31,7 @@
 	 <h2>Feeback</h2>
 	 <h3>Love something? Hate something? Let us know!</h3>
 		 Note : Fields marked with an asterisk(*) are mandatory
+		 Fields will be RED if not entered correctly 
 		 <br><br>
 		 <form method="post" id="feedbackForm" novalidate>
 			<label>Title*:</label>
@@ -37,6 +39,8 @@
 			<input type="radio" name="title" id="mr" value="mr" required="required"/>Mr.
 			<input type="radio" name="title" id="mrs" value="mrs" required="required"/>Mrs.
 			<br><br>
+
+			<!-- setting the pattern and minimum maximum constraints to all fields -->
 			<label for="firstName">First Name*:</label>
 			<input type="text" name="firstName" id="firstName" placeholder="First Name" required minlength="2" maxlength="50" pattern="[A-Za-z0-9]+" />	
 			<br><br>
@@ -46,18 +50,23 @@
 			<input type="text" name="lastName" id="lastName" placeholder="Last Name" required minlength="2" maxlength="50" pattern="[A-Za-z0-9]+" />
 			<br><br>
 			
-
+			<!-- northeastern email doamin contraint set -->
 			<label for="emailId">Email Id*:</label>
 			<input type="text" name="emailId" id="emailId" placeholder="yourname@domain.com" required pattern="[a-zA-Z0-9._%+-]+@northeastern.edu$" />
 			<br><br>
 			
-
+			<!-- 10 digits not space -->
 			<label for="phoneNumber">Phone Number*:</label>
-			<input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
+			<input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" required pattern="[0-9]{3} [0-9]{3} [0-9]{4}" />
 			<br><br>
 			
             <label for="zipcode">ZipCode*:</label>
 			<input type="text" name="zipcode" id="zipcode" placeholder="xxxxxx" required pattern="[0-9]{6}" />
+			<br><br>
+
+			<!-- optional field wont give an error -->
+			<label for="street">Street:</label>
+			<input type="text" name="street" id="street" placeholder="Street" required pattern="[A-Za-z0-9]+" />
 			<br><br>
              
             <label for="zipcode">How did you hear*:</label>
@@ -70,6 +79,7 @@
 			<textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25" required minlength="5" maxlength="500" ></textarea>
 			<br><br>
 
+			<!-- dropdown as suggested in the image -->
 			<label for="selectList">Select an option:</label>
                 <select id="selectList" onchange="toggleCheckbox()">
                     <option value="option1">Coffee</option>
@@ -109,16 +119,79 @@
             const isValidFirstName = validateField('firstName', /^[A-Za-z0-9]+$/, 2, 50);
             const isValidLastName = validateField('lastName', /^[A-Za-z0-9]+$/, 2, 50);
             const isValidEmail = validateField('emailId', /^[a-zA-Z0-9._%+-]+@northeastern.edu$/, 1, 255);
-            const isValidPhoneNumber = validateField('phoneNumber', /^[1-9]{3}-[0-9]{3}-[0-9]{4}$/, 1, 15);
+            const isValidPhoneNumber = validateField('phoneNumber', /^[1-9]{3}[0-9]{3}[0-9]{4}$/, 1, 15);
             const isValidZipCode = validateField('zipcode', /^[0-9]{6}$/, 1, 10);
+			const isValidStreet = validateField('street', /^[A-Za-z0-9]+$/, 2, 50);
             const isValidComments = validateField('comments', /^[A-Za-z0-9\s.,!?]+$/, 5, 500);
 
+			// as street is not required not adding it to form validation
             const isValidForm = isValidTitle && isValidFirstName && isValidLastName && isValidEmail && isValidPhoneNumber && isValidZipCode && isValidComments;
 
             document.getElementById('submitButton').disabled = !isValidForm;
 
             return isValidForm;
         }
+
+		function toggleCheckbox() {
+            const selectList = document.getElementById('selectList');
+            const checkboxContainer = document.getElementById('checkboxContainer');
+
+            const isChecked = selectList.value !== 'option1';
+
+            if (isChecked) {
+                checkboxContainer.innerHTML = '<input type="checkbox" id="dynamicCheckbox" /> Enable additional field';
+            } else {
+                checkboxContainer.innerHTML = '';
+            }
+
+            validateForm();
+        }
+
+		document.getElementById('feedbackForm').addEventListener('input', validateForm);
+
+        document.getElementById('feedbackForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            if (validateForm()) {
+                const tableData = {
+                    Title: document.querySelector('input[name="title"]:checked').value,
+                    FirstName: document.getElementById('firstName').value,
+                    LastName: document.getElementById('lastName').value,
+                    Email: document.getElementById('emailId').value,
+                    PhoneNumber: document.getElementById('phoneNumber').value,
+                    ZipCode: document.getElementById('zipcode').value,
+					Street: document.getElementById('street').value,
+                    Source: Array.from(document.querySelectorAll('input[name="source"]:checked')).map(source => source.value).join(', '),
+                    Comments: document.getElementById('comments').value
+                };
+
+                // to create the table to display the previous data
+                const table = document.createElement('table');
+                table.border = '1';
+                table.style.marginTop = '20px';
+
+                for (const key in tableData) {
+                    const row = table.insertRow();
+                    const cell1 = row.insertCell(0);
+                    const cell2 = row.insertCell(1);
+
+                    cell1.innerHTML = key;
+					cell2.innerHTML = tableData[key];
+                }
+
+                // display the table 
+                document.body.appendChild(table);
+
+                // clearing the form when submit s clicked 
+                document.getElementById('feedbackForm').reset();
+
+                // to reset the checkboxContainer
+                document.getElementById('checkboxContainer').innerHTML = '';
+
+                // disable the submit button after submission
+                document.getElementById('submitButton').disabled = true;
+            }
+        });
  
  </script>
 
