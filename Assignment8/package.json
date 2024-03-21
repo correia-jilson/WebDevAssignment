@@ -20,5 +20,6 @@
   "repository": {
     "type": "git",
     "url": "Assignment8"
-  }
+  },
+  "devDependencies": {}
 }

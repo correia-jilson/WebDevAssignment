@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const multer = require("multer");
-const userController = require("./controllers/userController");
+const userController = require("./controllers/userController.js");
 const app = express();
 
 app.use(express.json());
@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // DB connection
-mongoose.connect("mongodb://127.0.0.1:27017/mydb", {
+mongoose.connect("mongodb://localhost:27017/assign8", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
