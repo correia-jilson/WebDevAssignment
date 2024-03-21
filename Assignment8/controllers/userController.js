@@ -67,47 +67,24 @@ const getAllUsers = async (req, res) => {
     }
 };
 
-// const uploadUserImage = async (req, res) => {
-//     try {
-//         const user = await UserModel.findOne({ email: req.params.email });
-//         if (!user) return res.status(404).send("User not found.");
+const uploadUserImage = async (req, res) => {
+    try {
+        const user = await UserModel.findOne({ email: req.params.email });
+        if (!user) return res.status(404).send("User not found.");
 
-//         if (!req.file) return res.status(400).send("No image file provided.");
+        if (!req.file) return res.status(400).send("No image file provided.");
 
-//         user.imagePath = req.file.path;
-//         await user.save();
+        user.imagePath = req.file.path;
+        await user.save();
 
-//         res.status(200).send({ message: "Image uploaded successfully", imagePath: req.file.path });
-//     } catch (error) {
-//         res.status(500).send("Internal Server Error");
-//     }
-// };
-
-
-
-const multer = require('multer');
-const path = require('path');
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'images/');
-  },
-  filename: (req, file, cb) => {
-    const ext = path.parse(file.originalname).ext;
-    cb(null, Date.now() + '-' + ext);
-  }
-});
-
-
-const filterFile = (req, file, cb) => {
-  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === 'image/gif') {
-    cb(null, true);
-  } else {
-    cb(new Error('Only JPEG, PNG, and GIF files are allowed'), false);
-  }
+        res.status(200).send({ message: "Image uploaded successfully", imagePath: req.file.path });
+    } catch (error) {
+        res.status(500).send("Internal Server Error");
+    }
 };
 
-const upload = multer({ storage: storage, fileFilter: filterFile });
+
+
 
 
 
@@ -117,5 +94,5 @@ module.exports = {
     editUser,
     deleteUser,
     getAllUsers,
-    upload
+    uploadUserImage
 };

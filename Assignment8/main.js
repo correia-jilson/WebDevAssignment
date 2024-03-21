@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const multer = require("multer");
-const userController = require("./controllers/userController.js");
+const userController = require("./controllers/userController");
 const app = express();
 
 app.use(express.json());
@@ -38,10 +38,17 @@ app.get("/user/getAll", userController.getAllUsers);
 app.post("/user/uploadImage/:email", upload.single("image"), userController.uploadUserImage);
 
 // Start the server
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
+
+const PORT = 3000;
+server.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}/`);
 });
 
-module.exports = app;
+// app.listen(3000, () => {
+//     console.log("Server running on port 3000");
+// });
+
+// module.exports = app;
+
 
 
