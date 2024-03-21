@@ -18,17 +18,29 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // DB connection
+
+// mongoose.connect("mongodb://localhost:27017/assign8", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true
+// }, (err) => {
+//     if (!err) {
+//         console.log("Connected to db");
+//     } else {
+//         console.log("Error connecting to database");
+//     }
+// });
+
+// const mongoose = require("mongoose");
+
 mongoose.connect("mongodb://localhost:27017/assign8", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
-}, (err) => {
-    if (!err) {
-        console.log("Connected to db");
-    } else {
-        console.log("Error connecting to database");
-    }
-});
+})
+.then(() => console.log("Connected to db"))
+.catch(err => console.log("Error connecting to database", err));
+
 
 // User routes
 app.post("/user/create", userController.createUser);
@@ -39,16 +51,16 @@ app.post("/user/uploadImage/:email", upload.single("image"), userController.uplo
 
 // Start the server
 
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
-});
-
-// app.listen(3000, () => {
-//     console.log("Server running on port 3000");
+// const PORT = 3000;
+// server.listen(PORT, () => {
+//   console.log(`Server running at http://localhost:${PORT}/`);
 // });
 
-// module.exports = app;
+app.listen(3000, () => {
+    console.log("Server running on port http://localhost:3000/");
+});
+
+module.exports = app;
 
 
 
