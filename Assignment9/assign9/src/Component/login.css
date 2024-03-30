@@ -1,0 +1,69 @@
+
+.class1 h1 {
+
+    color: rgb(254, 254, 254);
+    text-align: center;
+}
+
+.class1 input{
+text-align: center;
+width: 70% ;
+margin: auto;
+display: block;
+background-color: #ffffff;
+border: none;
+color: rgb(17, 16, 16);
+padding: 16px 32px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+}
+.class1 input[type=submit] {
+text-align: center;
+width: 70% ;
+margin: auto;
+display: block;
+background-color: #dfa32b;
+border: none;
+color: rgb(17, 16, 16);
+transition-duration: 0.4s;
+}
+
+.class1 input[type=submit]:hover {
+background-color: #4fed3e; /* Green */
+color: white;
+}
+
+
+
+.class1 {
+display:table;/* shrinks to fit content */
+margin-top: 5%;
+margin-left: auto;
+margin-right: auto;
+box-sizing: border-box;
+padding: 2rem;
+border-radius: 1rem;
+background-color: hsl(0, 64%, 64%);
+border: 4px solid hsl(0, 46%, 11%);
+}
+
+.class1 form  {
+
+z-index: 1;
+}
+
+body
+{
+background-image: url("images/server.jpg");
+background-position: center;
+ 
+background-size: cover;
+height: 600px;
+margin-top: 5%;
+text-align: center;
+}
+
+
+
+

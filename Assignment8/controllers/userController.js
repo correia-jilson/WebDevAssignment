@@ -4,9 +4,9 @@ const UserModel = require("../models/userModel");
 
 // Joi validation schema
 const userValidationSchema = Joi.object({
-    fullName: Joi.string().min(2).max(30).required(),
+    fullName : Joi.string().min(2).max(30).required(),
     email: Joi.string().email().required(),
-    password: Joi.string().min(8).required()
+    password : Joi.string().min(8).required()
 });
 
 const createUser = async (req, res) => {
@@ -30,10 +30,12 @@ const createUser = async (req, res) => {
 
 const editUser = async (req, res) => {
     try {
-        const user = await UserModel.findOne({ email: req.params.email });
-        if (!user) return res.status(404).send("User not found.");
-
-        const { fullName, password } = req.body;
+        const { fullName, email , password } = req.body;
+        
+        if (!fullName) return res.status(404).send("fullName not found.");
+        if (!email) return res.status(404).send("Email not found.");
+        if (!password) return res.status(404).send("password not found.");
+        const user = await UserModel.findOne({ email });
         if (fullName) user.fullName = fullName;
         if (password) {
             const salt = await bcrypt.genSalt(10);
@@ -49,7 +51,8 @@ const editUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     try {
-        const result = await UserModel.deleteOne({ email: req.params.email });
+        const {email} = req.body;
+        const result = await UserModel.deleteOne({ email});
         if (result.deletedCount === 0) return res.status(404).send("User not found.");
 
         res.status(200).send("User deleted successfully.");
