@@ -47,7 +47,7 @@ function JobListings() {
                 <CardMedia
                 component="img"
                 height="140"
-                image={require("D:\\OneDrive\\Desktop\\WebDevAssignment\\Assignment9\\assign9\\src\\images\\roboman.png")}
+                image={require("D:\\OneDrive\\Desktop\\WebDevAssignment\\Assignment9\\assign9\\src\\images\\Google.png")}
                 alt={jobPost.title}
                 />
                 <CardContent>
