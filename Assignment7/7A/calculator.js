@@ -17,7 +17,7 @@ $(document).ready(() => {
                 result = num1 * num2;
                 break;
             case 'divide':
-                result = num2 !== 0 ? num1 / num2 : 'Infinite';
+                result = num2 !== 0 ? num1 / num2 : 'Enter valid input and not zero';
                 break;
             default:
                 result = 'Invalid Operation';
