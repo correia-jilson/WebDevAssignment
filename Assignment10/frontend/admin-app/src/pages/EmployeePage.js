@@ -1,5 +1,5 @@
 import React from 'react';
-import JobsList from '../features/jobs/JobsList'; // Component to display list of jobs
+import JobsList from './features/jobs/JobsList'; // Component to display list of jobs
 
 const EmployeePage = () => {
     return (

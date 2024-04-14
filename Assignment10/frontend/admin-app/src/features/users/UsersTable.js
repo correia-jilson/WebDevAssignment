@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Table } from 'react-bootstrap';
-import { fetchUsers } from './UserSlice';
+import { fetchUsers } from './UsersSlice';
 
 const UsersTable = () => {
   const dispatch = useDispatch();

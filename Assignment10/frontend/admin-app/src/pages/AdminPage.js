@@ -1,6 +1,6 @@
 import React from 'react';
-import UsersTable from '../features/users/UsersTable'; // Component to display users in a table
-import AddJobForm from '../features/jobs/AddJobForm'; // Form for admins to add jobs
+import UsersTable from './features/users/UsersTable'; // Component to display users in a table
+import AddJobForm from './features/jobs/AddJobForm'; // Form for admins to add jobs
 
 const AdminPage = () => {
     return (
